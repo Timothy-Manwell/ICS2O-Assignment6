@@ -20,7 +20,7 @@ const getFact = async (URLAddress) => {
     const result = await fetch(URLAddress)
     const jsonData = await result.json()
     console.log(jsonData)
-    document.getElementById("fact").innerHTML = jsonData.main.facts
+    document.getElementById("fact").innerHTML = jsonData.facts
       
   } catch (err) {
     console.log(err)

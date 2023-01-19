@@ -10,14 +10,22 @@
  * Check service worker.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-PWA-Test/sw.js", {
-    scope: "/ICS2O-PWA-Test/",
+  navigator.serviceWorker.register("/ICS2O-Assignment6/sw.js", {
+    scope: "/ICS2O-Assignment6/",
   })
 }
 
-/**
- * This function displays an alert.
- */
-function myButtonClicked() {
-  document.getElementById("hello-world").innerHTML = "<p>Hello, World!</p>"
+const getFact = async (URLAddress) => {
+  try {
+    const result = await fetch(URLAddress)
+    const jsonData = await result.json()
+    console.log(jsonData)
+    document.getElementById("fact").innerHTML = jsonData.main.facts
+      
+  } catch (err) {
+    console.log(err)
+  }
 }
+getFact(
+  "https://dogapi.dog/api/facts"
+)
